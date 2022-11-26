@@ -16,21 +16,11 @@ def openLocker():
     try:
         params = request.get_json()
         lockerId = params['lockerId']
-        GPIO.output(lockerId, GPIO.HIGH)
+        GPIO.output(lockerId, GPIO.HIGH) #딱 하고 열림..
+        GPIO.output(lockerId, GPIO.LOW)
         return True
     except :
         return False
-
-@app.route("/close") #라커 문을 닫는 API이다.
-def closeLocker():
-    try:
-        params = request.get_json()
-        lockerId = params['lockerId']
-        GPIO.output(locker[lockerId], GPIO.LOW)
-        return True
-    except:
-        return False
-
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0")
