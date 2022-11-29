@@ -3,18 +3,17 @@ from PyQt5 import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
-import RPi.GPIO as GPIO
-import requests as req
-import simplejson
+# import RPi.GPIO as GPIO
 from time import sleep
 
 led = [17, 27, 22, 10]
-url = "http://10.150.149.157/open"
+url = "http://10.150.149.50:8000/api/locker/open"
 
 def set_GPIO():
-   GPIO.setmode(GPIO.BCM)
-   for item in led:
-      GPIO.setup(item, GPIO.OUT)
+    return
+#    GPIO.setmode(GPIO.BCM)
+#    for item in led:
+#       GPIO.setup(item, GPIO.OUT)
 
 def server(lckNum, password):
    datas = {
@@ -28,9 +27,9 @@ def server(lckNum, password):
    a = res.json()
    if a['SUCCESS']==True:
       print("opened")
-      GPIO.output(led[lckNum - 1], GPIO.HIGH)
-      sleep(1)
-      GPIO.output(led[lckNum - 1], GPIO.LOW)
+    #   GPIO.output(led[lckNum - 1], GPIO.HIGH)
+    #   sleep(1)
+    #   GPIO.output(led[lckNum - 1], GPIO.LOW)
 
 class Main(QWidget):
     

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>가져가셨습니다</title>
+  </head>
+  <body>
+    <h1>tv9310님 이용해주셔서 감사합니다!</h1>
+    <p>라커번호 : 1번</p>
+    <p>이용시간 : 3시간</p>
+    <p class="남은시간"></p>
+    <button onclick="closeScreen()">확인</button>
+  </body>
+  <script>
+    const 남은시간 = document.querySelector(".남은시간");
+    let cnt = 10;
+    function closeScreen() {
+      self.close();
+    }
+    function counter() {
+      if (cnt !== 0) {
+        console.log(cnt + "초 후에 창이 닫힘");
+        남은시간.innerText = cnt + "초 후에 창이 닫힘";
+        cnt--;
+        setTimeout("counter()", 1000);
+      } else {
+        self.close();
+      }
+    }
+    counter();
+  </script>
+</html>
